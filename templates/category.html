@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ categories['name'] }}</title>
+</head>
+<body>
+
+<a href="/">Все новости</a>
+
+<h2>
+    {% for cat in categories %}
+    {{cat['name']}}<br/>
+    {{cat['text']}}<br/>
+    {{cat['likes']}}
+    {% if cat['likes']>99 %}
+        <img style="height: 20px;" src="/static/icons8-fire-48.png"/>
+        <br/>
+    {% endif %}
+    {% endfor %}
+</h2>
+
+
+
+</body>
+</html>

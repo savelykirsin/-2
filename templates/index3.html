@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Фанфики про Лунтика</title>
+</head>
+<body>
+<h1>Фанфики по вселенной Лунтика</h1>
+
+<ul>
+    {% for cat in categories %}
+        <li><a href="/category/{{ loop.index0 }}" target="_blank">{{ cat['name'] }}</a></li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
