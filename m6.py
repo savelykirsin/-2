@@ -1,4 +1,4 @@
-from flask import Flask, render_template,abort
+from flask import Flask, render_template,abort,redirect
 
 app = Flask(__name__)
 
@@ -56,6 +56,15 @@ def index():
 def category_page(category_id):
     if category_id < 0 or category_id >= len(categories):
         abort(404)
-    return render_template('category.html', categories = categories[category_id]['fanfics'])
+    return render_template('category.html', categories = categories[category_id]['fanfics'],category_id=category_id)
+
+@app.route('/category/<int:category_id>/fanfic/<int:fanfic_id>/like')
+def add_like(category_id, fanfic_id):
+    global categories
+    categories[category_id]['fanfics'][fanfic_id]['likes']+=1
+    return redirect(f'/category/{category_id}')
+
+
+
 
 app.run(debug=True)
